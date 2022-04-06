@@ -25,7 +25,6 @@ jobs:
         name: 'bot'
         runtime: 'python39'
         source_dir: './src'
-        secret_environment_variables: 'API_KEY'
         env_vars: 'TELEGRAM_TOKEN=${{ secrets.TELEGRAM_TOKEN }}'
 
     # Example of using the output
