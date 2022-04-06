@@ -28,5 +28,5 @@ jobs:
         env_vars: 'TELEGRAM_TOKEN=${{ secrets.TELEGRAM_TOKEN }}'
 
     # Example of using the output
-    - id: 'test'
-      run: 'curl "${{ steps.deploy.outputs.url }}"'
+    - id: 'set-url'
+      run: 'curl "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/setWebhook?url=${{ steps.deploy.outputs.url }}"'
