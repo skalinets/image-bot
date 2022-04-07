@@ -1,18 +1,14 @@
-name: Pylint
+name: Deploy
 
 on: [push]
 
 jobs:
   deploy:
-    permissions:
-      contents: 'read'
-      id-token: 'write'
-
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
-
+      
     - id: auth
       uses: google-github-actions/auth@v0
       with:
@@ -27,6 +23,5 @@ jobs:
         source_dir: './src'
         env_vars: 'TELEGRAM_TOKEN=${{ secrets.TELEGRAM_TOKEN }}'
 
-    # Example of using the output
     - id: 'set-url'
       run: 'curl "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/setWebhook?url=${{ steps.deploy.outputs.url }}"'
