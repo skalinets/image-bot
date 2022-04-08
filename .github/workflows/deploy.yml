@@ -11,7 +11,7 @@ jobs:
     - id: auth
       uses: google-github-actions/auth@v0
       with:
-        service_account: deployer@image-bot-346319.iam.gserviceaccount.com
+        service_account: ${{ secrets.GC_SERVICE_ACCOUNT }}
         credentials_json: ${{ secrets.GC_TOKEN }}
     - id: deploy
       uses: google-github-actions/deploy-cloud-functions@v0
