@@ -23,4 +23,4 @@ jobs:
     - id: set-url
       run: >-
         curl https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/
-                    setWebhook?url=${{ steps.deploy.outputs.url }}
+        setWebhook?url=${{ steps.deploy.outputs.url }}
