@@ -1,5 +1,6 @@
 import os
 import telegram
+import requests
 
 
 def bot(request):
@@ -10,7 +11,11 @@ def bot(request):
             chat_id = update.message.chat.id
 
             message = update.message.text
-            bot.sendMessage(chat_id=chat_id,
-                            text=f'got your request... you sent: {message}')
+            response = requests.get("https://meme-api.herokuapp.com/gimme")
+            if response.status_code == 200:
+                url = response.json()["url"]
+                bot.sendMessage(chat_id=chat_id,
+                                text=f"got your request... you sent: {message}\n"
+                                + f"here is your meme: {url}")
 
     return "this should never happen"
